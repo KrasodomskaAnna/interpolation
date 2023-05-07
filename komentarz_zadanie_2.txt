@@ -1,0 +1,23 @@
+Maksymalna różnica pomiędzy wartościami interpolacji interpolacji trygonometrycznej 
+wydaje się maleć wykładniczo dla zwiększającej się liczby węzłów interpolacji.
+Metoda interpolacji trygonometrycznej jest zbieżna, zatem jest on stabilna numerycznie.
+W związku z tym powyżej pewnej liczby zebranych próbek, rozkład badanej funkcji stabilizuje się.
+Dla pewnego K (tu już nawet dla K = [25, 30]) zwracane wyniki są na tyle dokładne, iż dla wielu symulacji mogłyby okazać się wystarczające.
+
+Natomiast maksymalna różnica pomiędzy wartościami interpolacji wielomianowej f(x) dla każdego x przyjmuje zupełnie inną wartość. 
+Metoda interpolacji wielomianowej dla K większych od 13 nie jest stabilna numerycznie.
+Wzrost liczby węzłów interpolacji nie zawsze oznacza spadek maksymalnej różnicy pomiędzy wartościami interpolacji. 
+Ponadto dla K<12 wartość ta jest znacznie niższa niż dla K=[16, 30] czy K=[36, 41].
+Zauważalny jest pik dla K=[14, 15], gdzie wartość maksymalnej różnicy pomiędzy wartościami interpolacji wynosi 1092.58 dla K=14 i 1089.39 dla K=15.
+Piki występują również dla K=31 : 270.45, K=34 : 250.779 i K=35 : 234.209, lecz dla nich wartości maksymalnej różnicy są znacznie mniejsze.
+
+Dla interpolowanej funkcji nie było takiej wartości K (wśród badanych wartości K), 
+dla którego interpolacja wielomianowa dałaby mniejszą wartość maksymalnej różnicy pomiędzy wartościami niż iterpolacja trygonometryczna.
+
+Należy jeszcze zauważyć, iż skompilowanie programu zwraca poniższe ostrzerzenie:
+Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  4.550145e-20. 
+> In polyfit2d (line 29)
+In main_1 (line 21)
+
+Jest to spowodowane tym, że interpolacja przebiega dla macierzy, która jest bliska macierzy osobliwej (singular) 
+przez co wyniki mogą być niedokładne.

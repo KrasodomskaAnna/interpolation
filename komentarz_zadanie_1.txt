@@ -1,0 +1,16 @@
+Inrerpolacja trygonometryczna z większą dokładnością wyznacza funkcję dla zwiększającej się liczby węzłów interpolacji, 
+natomiast interpolacja wielomianowa wyznacza ją z znacznie gorszą dokładnością. 
+Zjawisko pogarszania wyników dla krańców przedziałów dla interpolacji wielomianowej jest spowodowane efektem Rungego
+(interpolacja funkcji jest przeprowadzana poprawnie z środku przedziału, natomiast na krawędziach pojawiają się oscylacje).
+Efekt Rungego pojawia się przy wykorzystywaniu wielomianów wysokiego stopnia do interpolacji węzłów w równo-odległych punktach.
+Zauważalne jest, iż dla K=5 interpolacja wielomianowa daje dobre wyniki, natomiast przy K=15 na krańcach przedziałów pojawiają się już znaczące oscylacje.
+Dla K=25 czy K=35 są one na tyle duże, iż gubiony na wykresie jest krztałt w środku przedziału 
+(wykres zdaje się tam być płaski z jednym niewielkim wgłębieniem i 4 czy 3 wzniesieniami ledwo widocznymi nawet przy dokładnym przyjrzeniu się).
+
+Należy jeszcze zauważyć, iż skompilowanie programu zwraca poniższe ostrzerzenie:
+Warning: Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  4.550145e-20. 
+> In polyfit2d (line 29)
+In main_1 (line 21)
+
+Jest to spowodowane tym, że interpolacja przebiega dla macierzy, która jest bliska macierzy osobliwej (singular) 
+przez co wyniki mogą być niedokładne.
